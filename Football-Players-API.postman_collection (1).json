@@ -1,0 +1,338 @@
+{
+  "info": {
+    "_postman_id": "2898b569-9f22-4c50-9d4c-16886a111f1a",
+    "name": "Football Players API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "55864523",
+    "_collection_link": "https://go.postman.co/collection/55864523-2898b569-9f22-4c50-9d4c-16886a111f1a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Player Search",
+      "item": [
+        {
+          "name": "Search Player - Valid Query",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is acceptable\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains player data\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('response');",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "free-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-players-search?search=m",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-players-search"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "m"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Player - Empty Query",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "\tapplication/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "\tfree-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-players-search?search=",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-players-search"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Player - Special Characters",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "\tfree-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-players-search?search=@#$%",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-players-search"
+              ],
+              "query": [
+                {
+                  "key": "search",
+                  "value": "@"
+                }
+              ],
+              "hash": "$%"
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search Player - Missing Parameter",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "free-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-players-search",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-players-search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Countries",
+      "item": [
+        {
+          "name": "Get All Countries - Valid Request",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {",
+                  "    pm.response.to.have.status(200);",
+                  "});",
+                  "",
+                  "pm.test(\"Response is JSON\", function () {",
+                  "    pm.response.to.be.json;",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is acceptable\", function () {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(3000);",
+                  "});",
+                  "",
+                  "pm.test(\"Response contains countries data\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('response');",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "free-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-get-all-countries",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-get-all-countries"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Countries - Wrong Method (POST)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 404 for wrong method\", function () {",
+                  "    pm.response.to.have.status(404);",
+                  "});",
+                  "",
+                  "pm.test(\"Error message is present\", function () {",
+                  "    const jsonData = pm.response.json();",
+                  "    pm.expect(jsonData).to.have.property('message');",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-host",
+                "value": "free-api-live-football-data.p.rapidapi.com",
+                "type": "text"
+              },
+              {
+                "key": "x-rapidapi-key",
+                "value": "{{api_key}}",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "https://free-api-live-football-data.p.rapidapi.com/football-get-all-countries",
+              "protocol": "https",
+              "host": [
+                "free-api-live-football-data",
+                "p",
+                "rapidapi",
+                "com"
+              ],
+              "path": [
+                "football-get-all-countries"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
